@@ -19,6 +19,7 @@ pipeline {
         }
         stage('Launch') {
             steps {
+				echo 'youhoyoyoyoyoyoy'
                 sh 'cd TestRomain && ./hello'
             }
         }
