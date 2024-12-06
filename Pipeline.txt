@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clean env') {
+            steps {
+                sh "ls TestRomain && rm -rf TestRomain || echo ok"
+            }
+        }
+        stage('Get Source') {
+            steps {
+                sh 'git clone "https://github.com/romainroy01/TestRomain"'
+            }
+        }
+        stage('Compile') {
+            steps {
+                sh 'cd TestRomain && gcc hello.c -o hello'
+            }
+        }
+        stage('Launch') {
+            steps {
+                sh 'cd TestRomain && ./hello'
+            }
+        }
+    }
+}
